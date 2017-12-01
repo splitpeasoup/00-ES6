@@ -1,7 +1,6 @@
 * {
   color: gold;
   font-family: 'Helvetica';
-  /*outline: 1px dashed white;*/
 }
 
 body {
@@ -20,7 +19,6 @@ section {
 img {
   border: 6px solid #214;
   border-radius: 20px;
-  max-height: 200px;
   max-width: 25%;
   margin: 1.5%;
   vertical-align: middle;
@@ -43,13 +41,18 @@ p {
   font-size: 1.05em;
   line-height: 1.5em;
   padding: 10px;
-  /*width: 700px;*/
   margin: 10px auto;
   text-align: center;
 }
 
 canvas {
   margin: 10px auto;
+  width: 100%;
+}
+
+#productlist {
+  column-count: 2;
+  margin-bottom: 2%;
 }
 
 #bus {

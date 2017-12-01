@@ -7,8 +7,8 @@ var container = document.getElementById('image_container');
 var viewed = [];
 var labels = [];
 var pics = [document.getElementById('left'),
-                document.getElementById('center'), //eslint-disable-line
-                document.getElementById('right')]; //eslint-disable-line
+document.getElementById('center'), //eslint-disable-line
+document.getElementById('right')]; //eslint-disable-line
 var list = document.getElementById('productlist');
 var totalClicks = 0;
 var views = [];
@@ -26,11 +26,11 @@ function makeRandom() {
   return Math.floor(Math.random() * names.length);
 }
 
-function displayPics(){
+function displayPics() {
   // roll for three random indexes
-  while(viewed.length < 6){
+  while(viewed.length < 6) {
     var rando = makeRandom();
-    while(!viewed.includes(rando)){
+    while(!viewed.includes(rando)) {
       viewed.push(rando);
     }
   }
@@ -40,7 +40,7 @@ function displayPics(){
   console.log(viewed)
 
   // To the DOM and beyond!
-  for (var i = 0; i < 3; i++){
+  for(var i = 0; i < 3; i++) {
     var temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
@@ -55,18 +55,14 @@ function handleClick(event) {
     showList();
     makeChart();
   }
-  if (event.target.id === 'image_container') {
+  if(event.target.id === 'image_container') {
     return alert('Be sure to click directly on an image!!');
   }
   totalClicks += 1;
-  for(var i = 0; i < names.length; i++){
+  for(var i = 0; i < names.length; i++) {
     if(event.target.id === allProducts[i].name) {
-      if(event.target.id === allProducts[i].name) {
-        allProducts[i].votes += 1;
-        allProducts[i].votes += 1;
-        console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
-        console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
-      }
+      allProducts[i].votes += 1;
+      console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
     }
   }
   localStorage.busmall = JSON.stringify(allProducts);
@@ -82,15 +78,15 @@ function showList() {
   }
 }
 
-function makeChartData(){
-  allProducts.forEach(function(product){
+function makeChartData() {
+  allProducts.forEach(function (product) {
     labels.push(product.name);
     votes.push(product.votes);
     views.push(product.views);
   });
 }
 
-function makeChart(){
+function makeChart() {
   makeChartData();
   var ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, {
@@ -122,12 +118,12 @@ function makeChart(){
 
 container.addEventListener('click', handleClick);
 
-document.getElementById('bus').addEventListener('click', function(){
+document.getElementById('bus').addEventListener('click', function () {
   localStorage.removeItem('busmall');
   console.log('Local storage was cleared!');
 });
 
-if(localStorage.busmall){
+if(localStorage.busmall) {
   console.log('Local storage data exists');
   allProducts = JSON.parse(localStorage.busmall)
 } else {
