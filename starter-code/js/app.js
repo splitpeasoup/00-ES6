@@ -29,15 +29,15 @@ function makeRandom() {
 function displayPics() {
   // roll for three random indexes
   while(viewed.length < 6) {
-    var rando = makeRandom();
+    let rando = makeRandom();
     while(!viewed.includes(rando)) {
       viewed.push(rando);
     }
   }
   console.log(rando);
   // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
-  // PUT YOUR RESPONSE IN THIS COMMENT
-  console.log(viewed)
+  // PUT YOUR RESPONSE IN THIS COMMENT: the rando variable is now local to the while loop. the console.log command will not have access to the variable or its value.
+  console.log(viewed);
 
   // To the DOM and beyond!
   for(var i = 0; i < 3; i++) {
